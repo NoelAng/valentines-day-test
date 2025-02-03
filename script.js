@@ -46,7 +46,7 @@
 
             // Create and append the initial cat.gif
             var catImage = new Image();
-            catImage.src = 'cat.gif'; // Make sure this path is correct
+            catImage.src = 'cat.gif'; // Ensure this path is correct
             catImage.alt = 'Cat';
 
             // Log to check if the image is loading correctly
@@ -55,6 +55,7 @@
             };
             catImage.onerror = function() {
                 console.log('Error loading cat.gif');
+                alert('Error loading cat.gif! Please check the file path.');
             };
 
             imageContainer.appendChild(catImage); // Append image to the container
