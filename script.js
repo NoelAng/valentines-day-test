@@ -1,3 +1,15 @@
+// Function to display the initial cat.gif before interaction
+function displayCat() {
+    var imageContainer = document.getElementById('image-container');
+    imageContainer.innerHTML = ''; // Clear the container
+
+    // Create and append the initial cat.gif
+    var catImage = new Image();
+    catImage.src = 'cat.gif'; // Path to your initial cat image
+    catImage.alt = 'Cat';
+    imageContainer.appendChild(catImage); // Append image to the container
+}
+
 // Function to handle button click events
 function selectOption(option) {
     if (option === 'yes') {
@@ -56,5 +68,5 @@ function displayCatHeart() {
     document.getElementById('options').style.display = 'none';
 }
 
-// Display the cat.gif initially
+// Display the initial cat.gif
 displayCat();
