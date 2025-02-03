@@ -1,6 +1,5 @@
 // Function to handle button click events
 function selectOption(option) {
-    // Check which option was clicked
     if (option === 'yes') {
         // Flash rainbow colors
         flashRainbowColors(function() {
@@ -8,15 +7,12 @@ function selectOption(option) {
             displayCatHeart(); // Display the cat-heart.gif and add text
         });
     } else if (option === 'no') {
-        // Change text on the "No" button to "You sure?"
         document.getElementById('no-button').innerText = 'You sure?'; 
-        // Increase font size of "Yes" button
         var yesButton = document.getElementById('yes-button');
         var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
         var newSize = parseFloat(currentFontSize) * 2; // Increase font size by * 2px
         yesButton.style.fontSize = newSize + 'px';
     } else {
-        // If neither "Yes" nor "No" was clicked, show an alert message
         alert('Invalid option!');
     }
 }
@@ -32,52 +28,32 @@ function flashRainbowColors(callback) {
     setTimeout(function() {
         clearInterval(interval);
         document.body.style.backgroundColor = ''; // Reset background color
-        if (callback) {
-            callback();
-        }
+        callback(); // Call the callback once flashing is done
     }, 2000); // Flash colors for 2 seconds
 }
 
 // Function to display the cat-heart.gif and add text after Yes selection
 function displayCatHeart() {
-    // Clear existing content in the image container
     var imageContainer = document.getElementById('image-container');
-    imageContainer.innerHTML = ''; // Clear current content
-    
-    // Create a new Image element for the cat-heart
-    var catHeartImage = new Image();
-    catHeartImage.src = 'cat-heart.gif'; // Assuming the cat-heart image is named "cat-heart.gif"
-    catHeartImage.alt = 'Cat Heart';
-    
-    // When the cat-heart image is fully loaded, add it to the image container
-    catHeartImage.onload = function() {
-        console.log("Cat heart image loaded!");
-        imageContainer.appendChild(catHeartImage);
-        
-        // Create a new paragraph element for the text
-        var textElement = document.createElement('p');
-        // Set the text content of the paragraph
-        textElement.innerText = 'You chose YES! Here’s a cute cat heart for you! ❤️';
-        
-        // Style the text (optional)
-        textElement.style.textAlign = 'center';
-        textElement.style.fontSize = '20px';
-        textElement.style.fontWeight = 'bold';
-        textElement.style.marginTop = '10px';
-        
-        // Append the text below the image
-        imageContainer.appendChild(textElement);
-        
-        // Hide the options container
-        document.getElementById('options').style.display = 'none';
-        
-        console.log("Text has been appended!");
-    };
+    imageContainer.innerHTML = ''; // Clear the container
 
-    // In case the image doesn't load, handle the error
-    catHeartImage.onerror = function() {
-        console.error("Error loading the cat-heart image.");
-    };
+    // Create and append the cat-heart.gif
+    var catHeartImage = new Image();
+    catHeartImage.src = 'cat-heart.gif'; // Path to your cat-heart image
+    catHeartImage.alt = 'Cat Heart';
+    imageContainer.appendChild(catHeartImage); // Append image to the container
+
+    // Create and append the text below the cat-heart.gif
+    var textElement = document.createElement('p');
+    textElement.innerText = 'You chose YES! Here’s a cute cat heart for you! ❤️';
+    textElement.style.textAlign = 'center';
+    textElement.style.fontSize = '20px';
+    textElement.style.fontWeight = 'bold';
+    textElement.style.marginTop = '10px';
+    imageContainer.appendChild(textElement); // Append text below the image
+
+    // Hide the options container
+    document.getElementById('options').style.display = 'none';
 }
 
 // Display the cat.gif initially
