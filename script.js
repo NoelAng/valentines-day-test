@@ -51,6 +51,7 @@ function displayCatHeart() {
     
     // When the cat-heart image is fully loaded, add it to the image container
     catHeartImage.onload = function() {
+        console.log("Cat heart image loaded!");
         imageContainer.appendChild(catHeartImage);
         
         // Create a new paragraph element for the text
@@ -69,6 +70,13 @@ function displayCatHeart() {
         
         // Hide the options container
         document.getElementById('options').style.display = 'none';
+        
+        console.log("Text has been appended!");
+    };
+
+    // In case the image doesn't load, handle the error
+    catHeartImage.onerror = function() {
+        console.error("Error loading the cat-heart image.");
     };
 }
 
